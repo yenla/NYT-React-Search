@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Search from "./Search"
 
 export default class MainHeader extends Component {
 	render() {
@@ -9,18 +10,12 @@ export default class MainHeader extends Component {
 		          <div className="container-fluid">
 		            
 		            <div className="navbar-header">
-		              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-		                <span className="sr-only">Toggle navigation</span>
-		                <span className="icon-bar"></span>
-		                <span className="icon-bar"></span>
-		                <span className="icon-bar"></span>
-		              </button>
-		              <a className="navbar-brand" href="#">NYT-React</a>
+		              <a className="navbar-brand" href="#">NYT-React-Search</a>
 		            </div>
 		            
 		            <div className="collapse navbar-collapse navbar-ex1-collapse">
 		              <ul className="nav navbar-nav navbar-right">
-		                <li><a href="#/">Search</a></li>
+		                <li><a href="#/search">Search</a></li>
 		                <li><a href="#/saved">Saved Articles</a></li>
 		              </ul>
 		            </div>
@@ -28,17 +23,19 @@ export default class MainHeader extends Component {
 		        </nav>
 		        
 		        <div className="jumbotron">
-		          <h2 className="text-center"><strong>New York Times Article Scrubber</strong></h2>
-		          <h3 className="text-center">Search for and save articles of interest.</h3>
+		          <h2 className="text-center"><strong><i className="fa fa-newspaper-o fa-lg"></i> New York Times Article Scrubber</strong></h2>
+		          <h3 className="text-center">Search and save your favorite articles.</h3>
 		        </div>
 
-		        {/*<Search/>*/}
-		        {this.props.children}
+		        <Search />
+		        {/*{this.props.children}*/}
 
 		    </div>
 		)
 
 	}
 };
+
+// export default MainHeader;
 
 

@@ -1,20 +1,69 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import axios from "axios";
+
+import Query from "./search/Query";
+import Results from "./search/Result";
+
+import Helpers from "../utils/Helpers";
 
 
 export default class Search extends Component {
 	constructor(props) {
 		super(props);
+		
 		this.state = {
 			searchTerm: "",
 			startYear: "",
 			endYear: "",
-			results: [],
-			savedArticles: []
-		};
-		this.setTerm({searchTerm: newTerm, startyear: newStartYear, endyear: newEndYear});
+			results: {}
+			// savedArticles: []
+		}
+
+		this.setQuery = this.setQuery.bind(this);
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+
+		if (this.state.searchTerm != "" && (prevState.searchTerm != this.state.searchTerm || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) 
+		{
+			Helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear)
+			.then(function(data) {
+				if (data != this.state.results)
+				{
+					this.setState({
+						result:data
+					})
+				}
+			}.bind(this))
+
+		}
+	}
+
+	setQuery(newTerm, newStartYear, newEndYear){
+		this.setState({
+			searchTerm: newTerm,
+			startYear: newStartYear,
+			endYear: newEndYear
+		})
+
+		console.log('query running');
+		var data = Helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.newEndYear);
+		console.log(data);
+	}
+
+	render() {
+		return (
+			<div className="row">
+		        <div className="col-lg-12">
+		          <Query updateSearch={this.setQuery}/>
+		        </div>
+		      
+		        <div className="col-lg-12">
+		          <Results results={this.state.results}/>
+		        </div>
+		    </div>
+		)
+	}
 
 };
 

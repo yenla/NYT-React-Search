@@ -29,17 +29,10 @@ var ArticleSchema = new Schema({
   },
   
   // Summary of Article
-  summary: {
+  url: {
     type: String,
     required: true
-  },
-
-
-  // Create a relation with the Comment model
-  // comments: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Comment'
-  // }]
+  }
 
 });
 
