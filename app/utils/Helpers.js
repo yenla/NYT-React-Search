@@ -34,7 +34,7 @@ const Helpers = {
     })
 
     .then(function(results){
-      console.log(results);
+      console.log(results.data.response.docs);
       return results.data.response.docs;
     });
   },
