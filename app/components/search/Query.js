@@ -53,11 +53,11 @@ export default class Query extends Component {
 		                      <h4 className=""><strong>Topic</strong></h4>
 		                      <input type="text" value={this.state.value} className="form-control " id="search" onChange={this.handleChange} required/>
 
-		                      <h4 className=""><strong>Start Year (Required)</strong></h4>
-		                      <input value={this.state.value} className="form-control " id="start" onChange={this.handleChange} required/>
+		                      <h4 className=""><strong>Start Year (YYYYMMDD - Required)</strong></h4>
+		                      <input value={this.state.value} className="form-control " id="startYear" onChange={this.handleChange} required/>
 
-		                      <h4 className=""><strong>End Year (Required)</strong></h4>
-		                      <input value={this.state.value} className="form-control " id="end" onChange={this.handleChange} required/>
+		                      <h4 className=""><strong>End Year (YYYYMMDD - Required)</strong></h4>
+		                      <input value={this.state.value} className="form-control " id="endYear" onChange={this.handleChange} required/>
 
 		                    </div>
 

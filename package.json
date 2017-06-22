@@ -5,8 +5,8 @@
   "main": "public/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack & node server",
-    "start": "webpack & node server",
+    "dev": "webpack & nodemon server",
+    "start": "webpack & nodemon server",
     "build": "webpack"
   },
   "repository": {

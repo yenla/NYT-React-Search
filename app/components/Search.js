@@ -10,7 +10,7 @@ import Helpers from "../utils/Helpers";
 export default class Search extends Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			searchTerm: "",
 			startYear: "",
@@ -24,7 +24,7 @@ export default class Search extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 
-		if (this.state.searchTerm != "" && (prevState.searchTerm != this.state.searchTerm || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) 
+		if (this.state.searchTerm != "" && (prevState.searchTerm != this.state.searchTerm || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear))
 		{
 			Helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear)
 			.then(function(data) {
@@ -40,15 +40,17 @@ export default class Search extends Component {
 	}
 
 	setQuery(newTerm, newStartYear, newEndYear){
+    var term = newTerm;
+    var start = newStartYear;
+    var end = newEndYear;
 		this.setState({
-			searchTerm: newTerm,
-			startYear: newStartYear,
-			endYear: newEndYear
+			searchTerm: term,
+			startYear: start,
+			endYear: end
 		})
 
-		console.log('query running');
-		var data = Helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.newEndYear);
-		console.log(data);
+		// console.log('query running');
+		var data = Helpers.runQuery(newTerm, newStartYear, newEndYear);
 	}
 
 	render() {
@@ -57,7 +59,7 @@ export default class Search extends Component {
 		        <div className="col-lg-12">
 		          <Query updateSearch={this.setQuery}/>
 		        </div>
-		      
+
 		        <div className="col-lg-12">
 		          <Results results={this.state.results}/>
 		        </div>
